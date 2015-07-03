@@ -63,9 +63,8 @@ Check if blockchain is synced:
 test namecoin resolution
 ./namecoind name_show d/okturtles
 
-if you see "error: {"code":-101,"message":"loading block index"}"  then not synced yet.
-if synced it will return details
------------------------------------------------------------------------
+if you see "error: {"code":-101,"message":"loading block index"}"  then not synced yet.  if synced it will return details
+
 
 #Install PowerDNS pdns_recursor
 
