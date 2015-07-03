@@ -1,0 +1,23 @@
+ #systemd unit file to run namecoind at boot.
+ #Tested on ArchLinuxArm
+
+[Unit]
+Description=namecoind
+After=network.target
+
+[Service]
+Type=forking
+User=namecoin
+Group=namecoin
+WorkingDirectory=/home/namecoin
+ExecStart=/home/namecoin/namecoind -server -daemon
+ExecStop=/home/namecoin/namecoind stop
+
+Restart=on-failure
+TimeoutStartSec=10
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target
+
+#ExecStart=/home/namecoin/nmcstart.sh
