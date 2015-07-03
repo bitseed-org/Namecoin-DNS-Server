@@ -2,7 +2,7 @@
 assumes UBOS Arch Linix for ARM7
 needs to access archarm respositories [core][extra][community]in pacman.conf
 
-Overview
+#Overview
 -add repositories if needed
 -Setup new users
 -install namecoind
