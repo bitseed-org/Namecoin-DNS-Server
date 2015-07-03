@@ -1,6 +1,6 @@
-#general instruction for manual setup
-#assumes UBOS Arch Linix for ARM7
-#needs to access archarm respositories [core][extra][community]in pacman.conf
+#General instruction for manual setup
+assumes UBOS Arch Linix for ARM7
+needs to access archarm respositories [core][extra][community]in pacman.conf
 
 Overview
 -add repositories if needed
