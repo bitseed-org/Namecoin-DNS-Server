@@ -1,0 +1,36 @@
+# DNSChain systemd unit file. Auto starts DNSChain at boot.
+# When run at boot, allows DNSChain to service port 53 (the reserved port for DNS)
+# Tested on ArchLinuxArm
+
+[Unit]
+Description=dnschain
+After=network.target
+Wants=namecoin.service
+
+[Service]
+ExecStart=/usr/bin/dnschain
+Environment=DNSCHAIN_SYSD_VER=0.0.1
+PermissionsStartOnly=true
+ExecStartPre=/sbin/sysctl -w net.ipv4.ip_forward=1
+ExecStartPre=-/sbin/iptables -D INPUT -p udp --dport 5333 -j ACCEPT
+ExecStartPre=-/sbin/iptables -t nat -D PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5333
+ExecStartPre=/sbin/iptables -A INPUT -p udp --dport 5333 -j ACCEPT
+ExecStartPre=/sbin/iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5333
+ExecStopPost=/sbin/iptables -D INPUT -p udp --dport 5333 -j ACCEPT
+ExecStopPost=/sbin/iptables -t nat -D PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5333
+User=dnschain
+Group=dnschain
+Restart=always
+RestartSec=5
+WorkingDirectory=/home/dnschain
+PrivateTmp=true
+#NoNewPrivileges=true
+ReadOnlyDirectories=/etc
+
+# Unfortunately, capabilities are basically worthless because they're designed to restrict root d$
+# Capabilities=cap_net_bind_service+pei
+# SecureBits=keep-caps
+
+[Install]
+WantedBy=multi-user.target
+
