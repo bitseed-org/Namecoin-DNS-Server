@@ -19,5 +19,3 @@ TimeoutStopSec=20
 
 [Install]
 WantedBy=multi-user.target
-
-#ExecStart=/home/namecoin/nmcstart.sh
