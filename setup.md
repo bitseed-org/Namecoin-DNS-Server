@@ -54,7 +54,7 @@ cd ~
 start namecoind as daemon
 ./namecoind -daemon
 
-Allow about 24 hours to fully sync blockchain
+Allow about many hours or days to fully sync blockchain
 
 Check if blockchain is synced:
 ./namecoind getinfo
