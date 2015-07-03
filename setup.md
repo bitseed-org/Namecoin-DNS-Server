@@ -1,5 +1,6 @@
 #General instruction for manual setup
 assumes UBOS Arch Linix for ARM7
+
 needs to access archarm respositories [core][extra][community]in pacman.conf
 
 #Overview
@@ -39,7 +40,7 @@ sudo passwd namecoin
 Logout and log back in as namecoin
 
 
-Install namecoin
+#Install namecoin
 
 cd ~
 download namecoind (armhf version) into /home/namecoin
@@ -66,7 +67,7 @@ if you see "error: {"code":-101,"message":"loading block index"}"  then not sync
 if synced it will return details
 -----------------------------------------------------------------------
 
-Install PowerDNS pdns_recursor
+#Install PowerDNS pdns_recursor
 
 add user to sudoers
 sudo nano /etc/sudoers
@@ -105,7 +106,7 @@ flags should include "Answer: 1"  and it should show an ip address for okturtles
 
 ----------------------------------------------------------------
 
-Install DNSChain
+#Install DNSChain
 
 sudo pacman -S git
 sudo pacman -S python2  make  gcc
